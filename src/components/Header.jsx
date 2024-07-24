@@ -22,7 +22,7 @@ export default function Header() {
                      width='30'
                      height='30'
                   />
-                  &nbsp;&nbsp;GEP English MCQ
+                  &nbsp;&nbsp;GEP Vocab MCQ
                </Navbar.Brand>
 
                <Navbar.Toggle aria-controls="basic-navbar-nav" />
