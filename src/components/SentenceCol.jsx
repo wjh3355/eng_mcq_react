@@ -60,10 +60,10 @@ export default function SentenceCol({
                   <Card.Body>
 
                      <p>
-                        <strong class="fs-5 me-1">{rootWord}&nbsp;</strong>
-                        <span class="fst-italic">({type})</span>
+                        <strong className="fs-5 me-1">{rootWord}&nbsp;</strong>
+                        <span className="fst-italic">({type})</span>
                      </p>
-                     <p class="mb-0">{def}.</p>
+                     <p className="mb-0">{def}.</p>
 
                   </Card.Body>
                </Card>
