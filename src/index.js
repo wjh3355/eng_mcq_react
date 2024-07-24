@@ -10,14 +10,4 @@ root.render(
    <App/>
 );
 
-
-
-
-
-
-
-
-// function component and class component
-// every react app must contain a root component
-// loaded using 'import'
-// <ComponentName/>
+// note: npm run deploy to create production build for gh-pages.
