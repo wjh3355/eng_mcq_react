@@ -1,12 +1,13 @@
 import { Button, Card, Col, Collapse } from "react-bootstrap";
-import SentenceParaElement from "./SentenceParaElement";
 import { useEffect, useState } from "react";
+import SentenceParaElement from "./SentenceParaElement";
+import ExplanationElement from "./ExplanationElement";
 
 export default function SentenceCol({
    handleNextQnBtnClick,
    isNextQnBtnDisabled,
-   qnObj,
    isExplBtnDisabled,
+   qnObj
 }) {
    let { sentence, wordToTest, rootWord, type, def } = qnObj;
 
@@ -19,6 +20,7 @@ export default function SentenceCol({
 
    return (
       <Col lg={8}>
+
          <Card className="mb-3">
             <Card.Body>
                <SentenceParaElement
@@ -52,23 +54,16 @@ export default function SentenceCol({
 
          </div>
 
-         <Collapse 
-            in={isOpen}
-         >
+         <Collapse in={isOpen}>
             <div>
-               <Card>
-                  <Card.Body>
-
-                     <p>
-                        <strong className="fs-5 me-1">{rootWord}&nbsp;</strong>
-                        <span className="fst-italic">({type})</span>
-                     </p>
-                     <p className="mb-0">{def}.</p>
-
-                  </Card.Body>
-               </Card>
+               <ExplanationElement
+                  rootWord={rootWord}
+                  type={type}
+                  def={def}
+               />
             </div>
          </Collapse>
+
       </Col>
    );
 }

@@ -58,12 +58,13 @@ const crossIcon = (
 );
 
 export default function OptionButton({
-   displayedOption,
+   thisOption,
    isCorrectOption,
    hasBeenSelected,
    handleOptionClick,
    isDisabled,
 }) {
+
    const [isHovering, setIsHovering] = useState(false);
 
    let thisButtonStyle = {
@@ -78,6 +79,8 @@ export default function OptionButton({
       // if button has not been selected yet, and mouse hovering over, apply black border
    };
 
+   console.log('Re-rendering button');
+
    return (
       <button
          style={thisButtonStyle}
@@ -86,7 +89,9 @@ export default function OptionButton({
          onMouseLeave={() => setIsHovering(false)}
          disabled={isDisabled}
       >
-         <span>{displayedOption}</span>
+
+         <span>{thisOption}</span> 
+
          {isDisabled && isCorrectOption && tickIcon}
          {/* if this button has been disabled, and is correct, apply tick icon */}
          {hasBeenSelected && !isCorrectOption && crossIcon}

@@ -1,5 +1,6 @@
 import { Container, Row, Spinner } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { shuffle } from "d3-array";
 
 import SentenceCol from "./SentenceCol";
 import QuizOptionsCol from "./QuizOptionsCol";
@@ -8,17 +9,17 @@ const jsonSource = 'https://gist.githubusercontent.com/wjh3355/85ea89c3330149e56
 
 export default function Body() {
 
-   let [qnObjArray, setQnObjArray] = useState(null);
-   let [qnNum, setQnNum] = useState(0);
-   let [qnObj, setQnObj] = useState(null);
-   let [isNextQnBtnDisabled, setIsNextQnBtnDisabled] = useState(true);
-   let [isExplBtnDisabled, setIsExplBtnDisabled] = useState(true);
+   const [qnObjArray, setQnObjArray] = useState(null);
+   const [qnNum, setQnNum] = useState(0);
+   const [qnObj, setQnObj] = useState(null);
+   const [isNextQnBtnDisabled, setIsNextQnBtnDisabled] = useState(true);
+   const [isExplBtnDisabled, setIsExplBtnDisabled] = useState(true);
    
    useEffect(() => {
       fetch(jsonSource)
          .then(response => response.json())
          .then(data => {
-            setQnObjArray(data);
+            setQnObjArray(shuffle([...data]));
             console.log('Questions fetched successfully');
          })
          .catch(error => console.log("Error when fetching questions!", error))
@@ -34,7 +35,7 @@ export default function Body() {
 
    function handleNextQnBtnClick() {
       if (qnNum === qnObjArray.length - 1) {
-         setQnNum(prevQnNum => 0);
+         setQnNum(0);
       } else {
          setQnNum(prevQnNum => prevQnNum + 1);
       }
@@ -49,18 +50,7 @@ export default function Body() {
    }
 
    if (!qnObj) {
-      return (
-         <Container className="mt-3">
-            <div className="d-flex justify-content-center">
-               <h3>Loading...</h3>
-            </div>
-            <div className="d-flex justify-content-center mt-3">
-               <Spinner animation="border" variant="dark">
-                  <span className="visually-hidden">Loading...</span>
-               </Spinner>
-            </div>
-         </Container>
-      );
+      return <LoadingSpinner/>;
    } else {
       return (
          <Container className="mt-3">
@@ -80,4 +70,20 @@ export default function Body() {
          </Container>
       );
    };
+}
+
+
+function LoadingSpinner() {
+   return (
+      <Container className="mt-3">
+         <div className="d-flex justify-content-center">
+            <h3>Loading...</h3>
+         </div>
+         <div className="d-flex justify-content-center mt-3">
+            <Spinner animation="border" variant="dark">
+               <span className="visually-hidden">Loading...</span>
+            </Spinner>
+         </div>
+      </Container>
+   );
 }

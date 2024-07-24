@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 
 import OptionButton from "./OptionButton";
 
-export default function QuizOptionsCol({ qnObj, handleAnswer }) {
+export default function QuizOptionsCol({ 
+   qnObj,
+   handleAnswer 
+}) {
+
    let { options, correctAns } = qnObj;
 
    const [randomisedOptions, setRandomisedOptions] = useState([]);
@@ -27,7 +31,7 @@ export default function QuizOptionsCol({ qnObj, handleAnswer }) {
       return (
          <OptionButton
             key={thisOption}
-            displayedOption={thisOption} // constant! word shown in button
+            thisOption={thisOption} // constant! word shown in button
             isCorrectOption={isCorrectOption} 
             hasBeenSelected={thisOption === selectedOption} // all false initially, true for clicked button
             isDisabled={isDisabled} // changes from all false to all true once smth is selected
@@ -41,10 +45,7 @@ export default function QuizOptionsCol({ qnObj, handleAnswer }) {
    };
 
    return (
-      <Col 
-         lg={4}
-         className="mt-2 mt-md-0"
-      >
+      <Col lg={4} className="mt-2 mt-md-0">
          <div className="vstack gap-3">
             {randomisedOptions.map(option => renderButton(option))}
          </div>
