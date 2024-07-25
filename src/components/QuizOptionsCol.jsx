@@ -4,12 +4,11 @@ import { useEffect, useState } from "react";
 
 import OptionButton from "./OptionButton";
 
-export default function QuizOptionsCol({ 
-   qnObj,
-   handleAnswer 
-}) {
+import { useAppContext } from "./AllContext";
 
-   let { options, correctAns } = qnObj;
+export default function QuizOptionsCol() {
+
+   let { qnObj: { options, correctAns }, handleOptionClick } = useAppContext();
 
    const [randomisedOptions, setRandomisedOptions] = useState([]);
    const [selectedOption, setSelectedOption] = useState(null);
@@ -24,7 +23,7 @@ export default function QuizOptionsCol({
       }
    }, [options]);
 
-   const isDisabled = selectedOption !== null;
+   const isDisabled = selectedOption !== null; // disable all buttons once one is clicked
 
    function renderButton(thisOption) {
       let isCorrectOption = (thisOption === correctAns); // constant! true for correct button, false for all others
@@ -38,7 +37,7 @@ export default function QuizOptionsCol({
             handleOptionClick={() => {
                console.log('Option clicked:', isCorrectOption ? 'Correct!' : 'Wrong!');
                setSelectedOption(thisOption);
-               handleAnswer();
+               handleOptionClick();
             }}
          />
       )

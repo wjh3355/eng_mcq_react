@@ -1,16 +1,18 @@
-export default function SentenceParaElement({ 
-   sentence,
-   wordToTest 
-}) {
+import { useAppContext } from "./AllContext";
+
+export default function SentenceParaElement() {
+
+   const { qnObj: { sentence, wordToTest } } = useAppContext();
+
    const idxOfWord = sentence.indexOf(wordToTest);
 
    console.log('Re-rendering sentence');
 
    return (
-      <p className="my-0 fs-5">
+      <div className="fs-5">
         {sentence.slice(0, idxOfWord)}
         <strong>{wordToTest}</strong>
         {sentence.slice(idxOfWord + wordToTest.length)}
-      </p>
+      </div>
    );
 }
