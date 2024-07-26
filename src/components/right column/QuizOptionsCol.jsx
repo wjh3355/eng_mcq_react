@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import OptionButton from "./OptionButton";
 
-import { useAppContext } from "./AllContext";
+import { useAppContext } from "../AllContext";
 
 export default function QuizOptionsCol() {
 
@@ -35,16 +35,15 @@ export default function QuizOptionsCol() {
             hasBeenSelected={thisOption === selectedOption} // all false initially, true for clicked button
             isDisabled={isDisabled} // changes from all false to all true once smth is selected
             handleOptionClick={() => {
-               console.log('Option clicked:', isCorrectOption ? 'Correct!' : 'Wrong!');
                setSelectedOption(thisOption);
-               handleOptionClick();
+               handleOptionClick(isCorrectOption);
             }}
          />
       )
    };
 
    return (
-      <Col lg={4} className="mt-2 mt-md-0">
+      <Col lg={4} className="mt-2 mt-lg-0">
          <div className="vstack gap-3">
             {randomisedOptions.map(option => renderButton(option))}
          </div>

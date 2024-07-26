@@ -1,4 +1,4 @@
-import { useAppContext } from "./AllContext";
+import { useAppContext } from "../AllContext";
 
 export default function SentenceParaElement() {
 

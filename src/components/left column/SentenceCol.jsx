@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import SentenceParaElement from "./SentenceParaElement";
 import ExplanationElement from "./ExplanationElement";
 
-import { useAppContext } from "./AllContext";
+import { useAppContext } from "../AllContext";
 
 export default function SentenceCol() {
 
@@ -20,10 +20,8 @@ export default function SentenceCol() {
    return (
       <Col lg={8}>
 
-         <Card className="mb-3">
-            <Card.Body>
-               <SentenceParaElement/>
-            </Card.Body>
+         <Card body className="mb-3">
+            <SentenceParaElement/>
          </Card>
 
          <div className="d-flex gap-3 mb-2">
@@ -52,7 +50,7 @@ export default function SentenceCol() {
 
          <Collapse in={isOpen}>
             <div>
-               <ExplanationElement/>
+               {!isExplBtnDisabled && <ExplanationElement/>}
             </div>
          </Collapse>
 

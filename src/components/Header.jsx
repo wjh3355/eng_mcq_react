@@ -2,12 +2,16 @@ import { Container, Navbar, Nav, Modal } from "react-bootstrap";
 import { useState } from "react";
 
 import reactLogo from '../react-logo.svg';
+import ReviewElement from "./ReviewElement";
 
 export default function Header() {
-   const [show, setShow] = useState(false);
+   const [showInstr, setShowInstr] = useState(false);
+   const handleCloseInstr = () => setShowInstr(false);
+   const handleShowInstr = () => setShowInstr(true);
 
-   const handleCloseInstr = () => setShow(false);
-   const handleShowInstr = () => setShow(true);
+   const [showReview, setShowReview] = useState(false);
+   const handleCloseReview = () => setShowReview(false);
+   const handleShowReview = () => setShowReview(true);
 
    return (
       <>
@@ -30,14 +34,14 @@ export default function Header() {
                <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                      <Nav.Link onClick={handleShowInstr}>Instructions</Nav.Link>
-                     <Nav.Link className="disabled">Review</Nav.Link>
+                     <Nav.Link onClick={handleShowReview}>Review</Nav.Link>
                   </Nav>
                </Navbar.Collapse>
 
             </Container>
          </Navbar>
 
-         <Modal show={show} onHide={handleCloseInstr} centered>
+         <Modal show={showInstr} onHide={handleCloseInstr} centered>
             <Modal.Header closeButton>
                <Modal.Title>Instructions</Modal.Title>
             </Modal.Header>
@@ -48,6 +52,17 @@ export default function Header() {
                </p>
             </Modal.Body>
          </Modal>
+
+         <Modal show={showReview} onHide={handleCloseReview} size='lg' centered>
+            <Modal.Header closeButton>
+               <Modal.Title>Review of incorrect answers</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+               <ReviewElement/>
+            </Modal.Body>
+         </Modal>
       </>
    );
 }
+
+
