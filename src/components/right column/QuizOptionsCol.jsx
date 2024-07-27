@@ -45,7 +45,7 @@ export default function QuizOptionsCol() {
    return (
       <Col lg={4} className="mt-2 mt-lg-0">
          <div className="vstack gap-3">
-            {randomisedOptions.map(option => renderButton(option))}
+            {randomisedOptions.map(renderButton)}
          </div>
       </Col>
    );

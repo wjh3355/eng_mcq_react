@@ -8,14 +8,15 @@ const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 export function AppProvider({ children }) {
-   const [qnObjArr, setQnObjArr] = useState(null);
-   const [qnNum, setQnNum] = useState(0);
-   const [qnObj, setQnObj] = useState(null);
-   const [numQnsAns, setNumQnsAns] = useState(0);
-   const [numCorrectAns, setNumCorrectAns] = useState(0);
-   const [isNextQnBtnDisabled, setIsNextQnBtnDisabled] = useState(true);
-   const [isExplBtnDisabled, setIsExplBtnDisabled] = useState(true);
-   const [isCorrect, setIsCorrect] = useState(null);
+   const [qnObjArr, setQnObjArr]                         = useState(null);
+   const [qnNum, setQnNum]                               = useState(0);
+   const [qnObj, setQnObj]                               = useState(null);
+   const [numQnsAns, setNumQnsAns]                       = useState(0);
+   const [numCorrectAns, setNumCorrectAns]               = useState(0);
+   const [isNextQnBtnDisabled, setIsNextQnBtnDisabled]   = useState(true);
+   const [isExplBtnDisabled, setIsExplBtnDisabled]       = useState(true);
+   const [isCorrect, setIsCorrect]                       = useState(null);
+   const [wrongAnsArr, setWrongAnsArr]                   = useState([]);
 
    useEffect(() => {
       fetch(jsonSource)
@@ -30,13 +31,16 @@ export function AppProvider({ children }) {
          })
          .catch((error) =>
             console.log("Error when fetching questions!", error)
-         );
+      );
    }, []);
-
+   
    useEffect(() => {
       qnObjArr && setQnObj(qnObjArr[qnNum]);
+      console.log(qnNum, qnObjArr);
    }, [qnNum, qnObjArr]);
    // if qnObjArr is not null, set qnObj once qnNum changes
+
+   console.log('%cOOOOOOOOOOOOOOOOOOOOOo', 'background: red');
 
    function handleOptionClick(isCorrectOption) {
       setIsNextQnBtnDisabled(false);
@@ -47,21 +51,27 @@ export function AppProvider({ children }) {
    }
 
    function handleNextQnBtnClick() {
+      setNumQnsAns(prevNum => prevNum + 1);
+      isCorrect 
+         ? setNumCorrectAns(prevNum => prevNum + 1)
+         : setWrongAnsArr(prevArr => [...prevArr, qnObj]);
+      // before we update isCorrect back to null, increment numCorrectAns if it is true, if not add the qnObj to wrongQnsArr
+
+      setIsNextQnBtnDisabled(true);
+      setIsExplBtnDisabled(true);
+      setIsCorrect(null);
+      // reset states
+
       if (qnNum === qnObjArr.length - 1) {
          setQnNum(0);
          // loop back to 0 once all qns displayed
       } else {
          setQnNum((prevQnNum) => prevQnNum + 1);
       }
+      // change to next qn number
 
-      setNumQnsAns(prevNum => prevNum + 1);
-      isCorrect && setNumCorrectAns(prevNum => prevNum + 1);
-      // before we update isCorrect back to null, increment numCorrectAns
-
-      setIsNextQnBtnDisabled(true);
-      setIsExplBtnDisabled(true);
-      setIsCorrect(null);
       console.log("Displaying next question, Q" + qnObj.qnNum);
+      // this number is from the JSON, NOT the qnNum state
    }
 
    return (
@@ -69,15 +79,16 @@ export function AppProvider({ children }) {
          value={{
             qnObj,
             handleOptionClick,
+            isCorrect,
             isExplBtnDisabled,
             isNextQnBtnDisabled,
             handleNextQnBtnClick,
             numQnsAns,
             numCorrectAns,
-            isCorrect
+            wrongAnsArr
          }}
       >
-         {qnObj ? children : <DisplayLoading />}
+         {!qnObj ? <DisplayLoading />: children}
       </AppContext.Provider>
    );
 }

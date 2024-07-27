@@ -1,68 +1,53 @@
-// import { Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import { memo } from "react";
 
-// import { useAppContext } from "./AllContext";
-// import { useEffect, useState } from "react";
+import { useAppContext } from "./AllContext";
 
-export default function ReviewElement() {
-   // const { qnObj, isCorrect } = useAppContext();
-   // const [wrongAnsArr, setWrongAnsArr] = useState([]);
-   // const [hasWrongAnsYet, sethasWrongAnsYet] = useState(false);
+const ReviewElement = memo(function ReviewElement() {
+   const { wrongAnsArr } = useAppContext();
 
-   // useEffect(() => {
+   function generateWrongAnsCards(obj) {
+      const { sentence, rootWord, wordToTest, def } = obj;
+      const idxOfWord = sentence.indexOf(wordToTest);
+      return (
+         <Card body className="w-100 mb-3" key={rootWord}>
+            <p>
+               {sentence.slice(0, idxOfWord)}
+               <strong className="text-danger">{wordToTest}</strong>
+               {sentence.slice(idxOfWord + wordToTest.length)}
+            </p>
+            <div className="d-flex justify-content-center">
+               <div
+                  className="fst-italic py-2 px-4 rounded-5 border-bottom border-2"
+                  style={{ backgroundColor: "#ffe484" }}
+               >
+                  <strong>{rootWord}</strong>: {def}.
+               </div>
+            </div>
+         </Card>
+      );
+   }
 
-   //    // if (isCorrect === false) {
-   //    //    if (!hasWrongAnsYet) {
-   //    //       console.log('There has been a wrong question!', 'background: red');
-   //    //       sethasWrongAnsYet(true);
-   //    //    }
-   //    // }
+   console.log('re-rendering review');
 
-   //    console.log('%cQWERTYUIOIUYTRFGBJ!', 'background: red');
+   return (
+      <>
+         {wrongAnsArr.length > 0
+            ? wrongAnsArr.map(generateWrongAnsCards)
+            : <WrongAnsPlaceholder/>
+         }
+      </>
+   );
+})
 
-   //    // isCorrect === false && setWrongAnsArr((prevArr) => [...prevArr, qnObj]);
-   // }, [isCorrect]);
-
-   // function generateWrongAnsCards(obj) {
-   //    const { sentence, rootWord, wordToTest, def } = obj;
-   //    const idxOfWord = sentence.indexOf(wordToTest);
-   //    return (
-   //       <Card body className="w-100" key={rootWord}>
-   //          <p>
-   //             {sentence.slice(0, idxOfWord)}
-   //             <strong className="text-danger">{wordToTest}</strong>
-   //             {sentence.slice(idxOfWord + wordToTest.length)}
-   //          </p>
-   //          <div className="d-flex justify-content-center">
-   //             <div
-   //                className="fst-italic py-2 px-4 rounded-5 border-bottom border-2"
-   //                style={{ backgroundColor: "#ffe484" }}
-   //             >
-   //                <strong>{rootWord}</strong>: {def}.
-   //             </div>
-   //          </div>
-   //       </Card>
-   //    );
-   // }
-
+function WrongAnsPlaceholder() {
    return (
       <div className="d-flex justify-content-center">
          <p className="text-secondary fst-italic my-3">
-            Feature coming soon!
+            Incorrect answers will be displayed here.
          </p>
       </div>
    );
 }
 
-// function Placeholder() {
-//    return (
-//       <div className="d-flex justify-content-center">
-//          <p className="text-secondary fst-italic my-3">
-//             Incorrect answers will be displayed here.
-//          </p>
-//       </div>
-//    );
-// }
-
-// {hasWrongAnsYet 
-//    ? wrongAnsArr.map(obj => <p>{obj.qnNum}</p>) 
-//    : <Placeholder />}
+export default ReviewElement;
