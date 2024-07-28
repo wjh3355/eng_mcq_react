@@ -1,7 +1,7 @@
 import { Container, Navbar, Nav, Modal } from "react-bootstrap";
 import { useState } from "react";
 
-import reactLogo from '../react-logo.svg';
+import reactLogo from './react-logo.svg';
 import ReviewElement from "./ReviewElement";
 
 export default function Header() {

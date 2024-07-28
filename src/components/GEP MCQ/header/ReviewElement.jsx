@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 import { memo } from "react";
 
-import { useAppContext } from "./AllContext";
+import { useAppContext } from "../AllContext";
 
 const ReviewElement = memo(function ReviewElement() {
    const { wrongAnsArr } = useAppContext();
