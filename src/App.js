@@ -1,6 +1,7 @@
 import NavigationBar from "./components/header/NavigationBar";
 import Home from "./components/Home";
 import GEPApp from "./components/GEP MCQ/GEPApp";
+import NotFound from "./components/NotFound";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -12,6 +13,7 @@ export default function App() {
          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gep_mcq" element={<GEPApp />} />
+            <Route path="*" element={<NotFound />} />
          </Routes>
       </>
    );
