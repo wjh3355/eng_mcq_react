@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
-import GEPApp from './components/GEP MCQ/GEPApp';
+import App from './App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-   // <StrictMode>
-      <GEPApp/>
-   // </StrictMode>
+   <BrowserRouter>
+      <App/>
+   </BrowserRouter>
 );
 // note: npm run deploy to create production build for gh-pages.

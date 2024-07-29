@@ -1,6 +1,7 @@
 import { useAppContext } from "../AllContext";
+import { memo } from "react";
 
-export default function SentenceParaElement() {
+const SentenceParaElement = memo(function SentenceParaElement() {
 
    const { qnObj: { sentence, wordToTest } } = useAppContext();
 
@@ -15,4 +16,6 @@ export default function SentenceParaElement() {
         {sentence.slice(idxOfWord + wordToTest.length)}
       </div>
    );
-}
+});
+
+export default SentenceParaElement;

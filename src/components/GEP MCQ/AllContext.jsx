@@ -19,6 +19,8 @@ export function AppProvider({ children }) {
    const [isCorrect, setIsCorrect] = useState(null);
    const [wrongAnsArr, setWrongAnsArr] = useState([]);
 
+   const [isLoading, setIsLoading] = useState(true);
+
    useEffect(() => {
       fetch(jsonSource)
          .then((response) => response.json())
@@ -40,6 +42,10 @@ export function AppProvider({ children }) {
       qnObjArr && setQnObj(qnObjArr[qnNum]);
    }, [qnNum, qnObjArr]);
    // if qnObjArr is not null, set qnObj once qnNum changes
+
+   useEffect(() => {
+      qnObj && setIsLoading(false);
+   }, [qnObj])
 
    function handleOptionClick(isCorrectOption) {
       setIsNextQnBtnDisabled(false);
@@ -87,7 +93,7 @@ export function AppProvider({ children }) {
             wrongAnsArr,
          }}
       >
-         {!qnObj ? <DisplayLoading /> : children}
+         {isLoading ? <DisplayLoading /> : children}
       </AppContext.Provider>
    );
 }
