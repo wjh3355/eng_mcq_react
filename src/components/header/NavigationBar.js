@@ -24,11 +24,11 @@ export default function NavigationBar() {
 
             <Navbar.Collapse id="basic-navbar-nav">
                <Nav className="me-auto">
-                  <Nav.Link as={Link} to="/">
-                     Home
+                  <Nav.Link as={Link} to="/" disabled>
+                     About
                   </Nav.Link>
                   <Nav.Link as={Link} to="/gep_mcq">
-                     GEP English MCQ
+                     GEP MCQ
                   </Nav.Link>
                </Nav>
 
