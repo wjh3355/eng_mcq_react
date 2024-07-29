@@ -1,14 +1,13 @@
 {
   "files": {
     "main.css": "/english_mcq_react/static/css/main.d5289b2f.css",
-    "main.js": "/english_mcq_react/static/js/main.6dd5a213.js",
-    "static/media/react-logo.svg": "/english_mcq_react/static/media/react-logo.e68b35f4774979ae220b1d5d7b345b00.svg",
+    "main.js": "/english_mcq_react/static/js/main.d32c0bea.js",
     "index.html": "/english_mcq_react/index.html",
     "main.d5289b2f.css.map": "/english_mcq_react/static/css/main.d5289b2f.css.map",
-    "main.6dd5a213.js.map": "/english_mcq_react/static/js/main.6dd5a213.js.map"
+    "main.d32c0bea.js.map": "/english_mcq_react/static/js/main.d32c0bea.js.map"
   },
   "entrypoints": [
     "static/css/main.d5289b2f.css",
-    "static/js/main.6dd5a213.js"
+    "static/js/main.d32c0bea.js"
   ]
 }
