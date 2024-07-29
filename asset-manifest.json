@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/english_mcq_react/static/css/main.d5289b2f.css",
-    "main.js": "/english_mcq_react/static/js/main.d32c0bea.js",
+    "main.js": "/english_mcq_react/static/js/main.d3589a1f.js",
     "index.html": "/english_mcq_react/index.html",
     "main.d5289b2f.css.map": "/english_mcq_react/static/css/main.d5289b2f.css.map",
-    "main.d32c0bea.js.map": "/english_mcq_react/static/js/main.d32c0bea.js.map"
+    "main.d3589a1f.js.map": "/english_mcq_react/static/js/main.d3589a1f.js.map"
   },
   "entrypoints": [
     "static/css/main.d5289b2f.css",
-    "static/js/main.d32c0bea.js"
+    "static/js/main.d3589a1f.js"
   ]
 }
