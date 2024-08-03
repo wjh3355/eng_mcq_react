@@ -1,9 +1,9 @@
-import { useAppContext } from "../AllContext";
+import { useGEPQnContext } from "../GEPQnProvider";
 import { memo } from "react";
 
 const SentenceParaElement = memo(function SentenceParaElement() {
 
-   const { qnObj: { sentence, wordToTest } } = useAppContext();
+   const { qnObj: { sentence, wordToTest } } = useGEPQnContext();
 
    const idxOfWord = sentence.indexOf(wordToTest);
 

@@ -5,11 +5,11 @@ import SentenceParaElement from "./SentenceParaElement";
 import ExplanationElement from "./ExplanationElement";
 import ReviewElement from "./ReviewElement";
 
-import { useAppContext } from "../AllContext";
+import { useGEPQnContext } from "../GEPQnProvider";
 
 export default function SentenceCol() {
 
-   const { handleNextQnBtnClick, isNextQnBtnDisabled, isExplBtnDisabled } = useAppContext();
+   const { handleNextQnBtnClick, isNextQnBtnDisabled, isExplBtnDisabled } = useGEPQnContext();
 
    const [isExplShown, setIsExplShown] = useState(false);
    const [isReviewShown, setIsReviewShown] = useState(false);

@@ -1,10 +1,10 @@
 import { Card } from "react-bootstrap";
 
-import { useAppContext } from "../AllContext";
+import { useGEPQnContext } from "../GEPQnProvider";
 
 export default function ExplanationElement() {
 
-   const { qnObj: { rootWord, type, def } } = useAppContext();
+   const { qnObj: { rootWord, type, def } } = useGEPQnContext();
    
    console.log('Re-rendering explanation');
    

@@ -1,10 +1,10 @@
 import { Card } from "react-bootstrap";
-import { memo } from "react";
+import React, { memo } from "react";
 
-import { useAppContext } from "../AllContext";
+import { useGEPQnContext } from "../GEPQnProvider";
 
 const ReviewElement = memo(function ReviewElement() {
-   const { wrongAnsArr } = useAppContext();
+   const { wrongAnsArr } = useGEPQnContext();
 
    function generateWrongAnsCards(obj) {
       const { sentence, rootWord, wordToTest, def } = obj;

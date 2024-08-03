@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
-import { useAppContext } from "./AllContext";
+import { useGEPQnContext } from "./GEPQnProvider";
 
 export default function ScoreComponent() {
-   let { numQnsAns, numCorrectAns } = useAppContext();
+   let { numQnsAns, numCorrectAns } = useGEPQnContext();
    let percentCorrect = numQnsAns
       ? Math.round((numCorrectAns * 100) / numQnsAns)
       : 0;

@@ -1,23 +1,25 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { Container, Spinner } from "react-bootstrap";
 import { shuffle } from "d3-array";
 
-const jsonSource =
-   "https://gist.githubusercontent.com/wjh3355/0044ee12436ff44915daf15e45622ef2/raw/be0c6588a1cbc2c6632924a2b97211a0ac41b8f2/source.json";
+import LoadingSpinner from "../utils/LoadingSpinner"
 
-const AppContext = createContext();
-export const useAppContext = () => useContext(AppContext);
+const jsonSource = "https://gist.githubusercontent.com/wjh3355/0044ee12436ff44915daf15e45622ef2/raw/3b124df670ed782ae4c6a26fcfad235b5db2385b/source_501-600.json";
 
-export function AppProvider({ children }) {
+const GEPQnContext = createContext();
+export const useGEPQnContext = () => useContext(GEPQnContext);
+
+export function GEPQnProvider({ children }) {
    const [qnObjArr, setQnObjArr] = useState(null);
    const [qnNum, setQnNum] = useState(0);
    const [qnObj, setQnObj] = useState(null);
+
    const [numQnsAns, setNumQnsAns] = useState(0);
    const [numCorrectAns, setNumCorrectAns] = useState(0);
+   const [wrongAnsArr, setWrongAnsArr] = useState([]);
+
    const [isNextQnBtnDisabled, setIsNextQnBtnDisabled] = useState(true);
    const [isExplBtnDisabled, setIsExplBtnDisabled] = useState(true);
    const [isCorrect, setIsCorrect] = useState(null);
-   const [wrongAnsArr, setWrongAnsArr] = useState([]);
 
    const [isLoading, setIsLoading] = useState(true);
 
@@ -80,7 +82,7 @@ export function AppProvider({ children }) {
    }
 
    return (
-      <AppContext.Provider
+      <GEPQnContext.Provider
          value={{
             qnObj,
             handleOptionClick,
@@ -93,22 +95,7 @@ export function AppProvider({ children }) {
             wrongAnsArr,
          }}
       >
-         {isLoading ? <DisplayLoading /> : children}
-      </AppContext.Provider>
+         {isLoading ? <LoadingSpinner /> : children}
+      </GEPQnContext.Provider>
    );
-}
-
-function DisplayLoading() {
-   return (
-      <Container className="mt-3">
-         <div className="d-flex justify-content-center">
-            <h3>Loading...</h3>
-         </div>
-         <div className="d-flex justify-content-center mt-3">
-            <Spinner animation="border" variant="dark">
-               <span className="visually-hidden">Loading...</span>
-            </Spinner>
-         </div>
-      </Container>
-   );
-}
+};

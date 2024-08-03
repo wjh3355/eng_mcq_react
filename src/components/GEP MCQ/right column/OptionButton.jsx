@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const correctAnsStyle = {
    borderColor: "green",
@@ -57,13 +57,21 @@ const crossIcon = (
    ></i>
 );
 
+type OptionButtonProps = {
+   thisOption: string;
+   isCorrectOption: boolean;
+   hasBeenSelected: null | boolean;
+   handleOptionClick: Function;
+   isDisabled: boolean;
+}
+
 export default function OptionButton({
    thisOption,
    isCorrectOption,
    hasBeenSelected,
    handleOptionClick,
    isDisabled,
-}) {
+}: OptionButtonProps) {
 
    const [isHovering, setIsHovering] = useState(false);
 

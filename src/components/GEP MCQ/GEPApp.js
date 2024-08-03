@@ -1,4 +1,4 @@
-import { AppProvider } from "./AllContext";
+import { GEPQnProvider } from "./GEPQnProvider";
 
 import { Container, Row } from "react-bootstrap";
 
@@ -10,7 +10,7 @@ import ScoreComponent from "./ScoreComponent";
 export default function GEPApp() {
 
    return (
-      <AppProvider>
+      <GEPQnProvider>
          
          <Container className="mt-3">
             <Row>
@@ -20,6 +20,6 @@ export default function GEPApp() {
          </Container>
 
          <ScoreComponent/>
-      </AppProvider>
+      </GEPQnProvider>
    );
 }

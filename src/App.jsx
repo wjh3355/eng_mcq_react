@@ -1,7 +1,9 @@
+import React from "react";
+
 import NavigationBar from "./components/header/NavigationBar";
-import Home from "./components/Home";
+import Home from "./components/HOMEPAGE/Home";
 import GEPApp from "./components/GEP MCQ/GEPApp";
-import NotFound from "./components/NotFound";
+import NotFound from "./components/utils/NotFound";
 
 import { Routes, Route } from "react-router-dom";
 

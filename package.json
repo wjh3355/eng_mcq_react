@@ -1,5 +1,5 @@
 {
-   "name": "myfirstapp",
+   "name": "english_mcq_react",
    "version": "0.1.0",
    "private": true,
    "homepage": "https://wjh3355.github.io/english_mcq_react",
@@ -11,6 +11,7 @@
       "bootstrap-icons": "^1.11.3",
       "classnames": "^2.5.1",
       "d3-array": "^3.2.4",
+      "firebase": "^10.12.4",
       "prop-types": "^15.8.1",
       "react": "^18.3.1",
       "react-bootstrap": "^2.10.4",
@@ -18,6 +19,7 @@
       "react-router-dom": "^6.25.1",
       "react-scripts": "^5.0.1",
       "styled-components": "^6.1.12",
+      "vercel": "^35.2.1",
       "web-vitals": "^2.1.4"
    },
    "scripts": {

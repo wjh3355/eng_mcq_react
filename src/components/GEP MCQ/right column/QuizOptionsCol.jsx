@@ -1,14 +1,14 @@
 import { Col } from "react-bootstrap";
 import { shuffle } from "d3-array";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import OptionButton from "./OptionButton";
 
-import { useAppContext } from "../AllContext";
+import { useGEPQnContext } from "../GEPQnProvider";
 
 export default function QuizOptionsCol() {
 
-   let { qnObj: { options, correctAns }, handleOptionClick } = useAppContext();
+   let { qnObj: { options, correctAns }, handleOptionClick } = useGEPQnContext();
 
    const [randomisedOptions, setRandomisedOptions] = useState([]);
    const [selectedOption, setSelectedOption] = useState(null);
