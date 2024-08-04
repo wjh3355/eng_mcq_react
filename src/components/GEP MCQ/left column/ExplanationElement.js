@@ -1,5 +1,3 @@
-import { Card } from "react-bootstrap";
-
 import { useGEPQnContext } from "../GEPQnProvider";
 
 export default function ExplanationElement() {
@@ -9,7 +7,7 @@ export default function ExplanationElement() {
    console.log('Re-rendering explanation');
    
    return (
-      <Card body>
+      <div className="card card-body">
          <p>
             <strong className="fs-5 me-1">
                {rootWord}&nbsp;
@@ -17,6 +15,6 @@ export default function ExplanationElement() {
             <span className="fst-italic">({type})</span>
          </p>
          {def}.
-      </Card>
+      </div>
    );
 }

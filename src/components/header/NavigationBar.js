@@ -1,38 +1,47 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function NavigationBar() {
 
    return (
       <>
-         <Navbar expand="lg" bg="dark" data-bs-theme="dark">
-            <Container>
-
-               <Navbar.Brand as={Link} to="/">
+         <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div className="container">
+               <Link className="navbar-brand" to="/">
                   English Tutor
-               </Navbar.Brand>
+               </Link>
 
-               <Navbar.Toggle aria-controls="basic-navbar-nav" />
+               <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThisNavbar"
+               >
+                  <span className="navbar-toggler-icon"></span>
+               </button>
 
-               <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="me-auto">
-                     <Nav.Link as={Link} to="/qqq" disabled>
-                        About
-                     </Nav.Link>
+               <div className="collapse navbar-collapse" id="collapseThisNavbar">
+                  <ul className="navbar-nav me-auto">
 
-                     <Nav.Link as={Link} to="/gep_mcq">
-                        GEP MCQ
-                     </Nav.Link>
-                  </Nav>
+                     <li className="nav-item">
+                        <Link className="nav-link disabled" to="/fuckthisshit">
+                           About
+                        </Link>
+                     </li>
 
-                  <Navbar.Text>
+                     <li className="nav-item">
+                        <Link className="nav-link" to="/gep_mcq">
+                           GEP MCQ
+                        </Link>
+                     </li>
+
+                  </ul>
+
+                  <span className="navbar-text">
                      Signed in as: <strong>John Doe</strong>
-                  </Navbar.Text>
-
-               </Navbar.Collapse>
-
-            </Container>
-         </Navbar>
+                  </span>
+               </div>
+            </div>
+         </nav>
       </>
    );
 }

@@ -1,4 +1,3 @@
-import { Card } from "react-bootstrap";
 import React, { memo } from "react";
 
 import { useGEPQnContext } from "../GEPQnProvider";
@@ -10,7 +9,7 @@ const ReviewElement = memo(function ReviewElement() {
       const { sentence, rootWord, wordToTest, def } = obj;
       const idxOfWord = sentence.indexOf(wordToTest);
       return (
-         <Card body className="w-100 mb-3" key={rootWord}>
+         <div className="card card-body w-100 mb-3" key={rootWord}>
             <p>
                {sentence.slice(0, idxOfWord)}
                <strong className="text-danger">{wordToTest}</strong>
@@ -24,7 +23,7 @@ const ReviewElement = memo(function ReviewElement() {
                   <strong>{rootWord}</strong>: {def}.
                </div>
             </div>
-         </Card>
+         </div>
       );
    }
 

@@ -2,4 +2,3 @@ node_modules
 build
 desktop.ini
 test.js
-src/components/auth

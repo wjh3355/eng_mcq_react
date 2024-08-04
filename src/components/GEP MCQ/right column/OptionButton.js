@@ -57,13 +57,6 @@ const crossIcon = (
    ></i>
 );
 
-type OptionButtonProps = {
-   thisOption: string;
-   isCorrectOption: boolean;
-   hasBeenSelected: null | boolean;
-   handleOptionClick: Function;
-   isDisabled: boolean;
-}
 
 export default function OptionButton({
    thisOption,
@@ -71,7 +64,7 @@ export default function OptionButton({
    hasBeenSelected,
    handleOptionClick,
    isDisabled,
-}: OptionButtonProps) {
+}) {
 
    const [isHovering, setIsHovering] = useState(false);
 

@@ -1,7 +1,5 @@
 import { GEPQnProvider } from "./GEPQnProvider";
 
-import { Container, Row } from "react-bootstrap";
-
 import SentenceCol from "./left column/SentenceCol";
 import QuizOptionsCol from "./right column/QuizOptionsCol";
 import ScoreComponent from "./ScoreComponent";
@@ -12,12 +10,12 @@ export default function GEPApp() {
    return (
       <GEPQnProvider>
          
-         <Container className="mt-3">
-            <Row>
+         <div className="container mt-3">
+            <div className="row">
                <SentenceCol/>
                <QuizOptionsCol />
-            </Row>
-         </Container>
+            </div>
+         </div>
 
          <ScoreComponent/>
       </GEPQnProvider>

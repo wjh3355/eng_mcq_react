@@ -1,4 +1,3 @@
-import { Col } from "react-bootstrap";
 import { shuffle } from "d3-array";
 import React, { useEffect, useState } from "react";
 
@@ -43,10 +42,10 @@ export default function QuizOptionsCol() {
    };
 
    return (
-      <Col lg={4} className="mt-2 mt-lg-0">
+      <div className="col-lg-4 mt-2 mt-lg-0">
          <div className="vstack gap-3">
             {randomisedOptions.map(renderButton)}
          </div>
-      </Col>
+      </div>
    );
 }
