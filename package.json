@@ -4,22 +4,14 @@
    "private": true,
    "homepage": "https://wjh3355.github.io/english_mcq_react",
    "dependencies": {
-      "@testing-library/jest-dom": "^5.17.0",
-      "@testing-library/react": "^13.4.0",
-      "@testing-library/user-event": "^13.5.0",
       "bootstrap": "^5.3.3",
       "bootstrap-icons": "^1.11.3",
-      "classnames": "^2.5.1",
-      "d3-array": "^3.2.4",
       "firebase": "^10.12.4",
-      "prop-types": "^15.8.1",
+      "lodash": "^4.17.21",
       "react": "^18.3.1",
       "react-dom": "^18.3.1",
       "react-router-dom": "^6.25.1",
-      "react-scripts": "^5.0.1",
-      "styled-components": "^6.1.12",
-      "vercel": "^35.2.1",
-      "web-vitals": "^2.1.4"
+      "react-scripts": "^5.0.1"
    },
    "scripts": {
       "start": "react-scripts start",

@@ -35,10 +35,6 @@ export default function NavigationBar() {
                      </li>
 
                   </ul>
-
-                  <span className="navbar-text">
-                     Signed in as: <strong>John Doe</strong>
-                  </span>
                </div>
             </div>
          </nav>

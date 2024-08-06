@@ -1,4 +1,4 @@
-import { shuffle } from "d3-array";
+import { shuffle } from "lodash";
 import React, { useEffect, useState } from "react";
 
 import OptionButton from "./OptionButton";

@@ -1,9 +1,9 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { shuffle } from "d3-array";
+import { shuffle } from "lodash";
 
 import LoadingSpinner from "../utils/LoadingSpinner"
 
-const jsonSource = "https://gist.githubusercontent.com/wjh3355/0044ee12436ff44915daf15e45622ef2/raw/3b124df670ed782ae4c6a26fcfad235b5db2385b/source_501-600.json";
+const jsonSource = "https://gist.githubusercontent.com/wjh3355/0044ee12436ff44915daf15e45622ef2/raw/567e2f20b85ec7eb7a501ac942a9df2387aca2d2/source.json";
 
 const GEPQnContext = createContext();
 export const useGEPQnContext = () => useContext(GEPQnContext);
